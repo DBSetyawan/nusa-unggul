@@ -6,6 +6,7 @@ use DataTables;
 use App\Models\User;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use App\Providers\RouteServiceProvider;
@@ -56,6 +57,11 @@ class AuthenticatedSessionController extends Controller
         return redirect('/');
     }
 
+    public function testA(Request $request)
+    {
+        $inc = DB::select('call trigger_pelanggan_id;');
+        return response()->json(['response' => $inc]);
+    }
 
     public function list(Request $request)
     {

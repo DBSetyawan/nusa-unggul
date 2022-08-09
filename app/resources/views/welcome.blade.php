@@ -33,9 +33,13 @@
     <meta name="twitter:image"
         content="http://tailwindcomponents.com/storage/6641/conversions/temp38299-ogimage.jpg?v=2022-08-09 07:09:41">
 
-    <title>Input field by zoltanszogyenyi. </title>
-
+    <title>Development</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js">
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
+
+    
     <style>
         /* ! tailwindcss v3.1.8 | MIT License | https://tailwindcss.com */
         *,
@@ -742,7 +746,7 @@
                 <div>
                     <label for="first_name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Kode
                         Pelanggan</label>
-                    <input type="text" id="first_name"
+                    <input type="text" id="kodepelanggan" name="kodepelanggan"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         placeholder="John" required="">
                 </div>
@@ -812,14 +816,31 @@
                         Telp</label>
                     <input type="text" id="plafon"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="1.000.000" required="">
+                        placeholder="1.000.000" required>
                 </div>
             </div>
-            <button type="submit"
-                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-right dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Simpan</button>
+            <div class="grid gap-6 mb-6 lg:grid-cols-3">
+                <div id="saveData"
+                class="text-white text-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                Simpan
+            </div>
+            </div>
         </form>
     </div>
     <div id="janus-extension-installed" style="display: none;"></div>
 </body>
+
+<script type="text/javascript">
+    $(function () {
+
+        $('body').on('click', '#saveData', function () {
+            var endpoint = '{{ route("aw.sl") }}';
+            $.get(endpoint, function (data) {
+                $('#kodepelanggan').val(data.response);
+            })
+        });
+    });
+
+</script>
 
 </html>
