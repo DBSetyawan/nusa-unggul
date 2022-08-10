@@ -59,8 +59,8 @@ class AuthenticatedSessionController extends Controller
 
     public function testA(Request $request)
     {
-        $inc = DB::select('call trigger_pelanggan_id;');
-        return response()->json(['response' => $inc]);
+        $inc = DB::select('call trigger_pidd');
+        return response()->json(['response' => collect($inc)->toArray()]);
     }
 
     public function list(Request $request)
